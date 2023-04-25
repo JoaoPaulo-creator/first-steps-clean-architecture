@@ -12,7 +12,14 @@ export class MongoDbUserRepository
     email,
   }: CreateUserControllerTeste.Request): Promise<User> {
     const userCollection = await MongoHelper.getCollection("users");
-    const user: any = await userCollection.insertOne({ name, email });
+    const result = await userCollection.insertOne({ name, email });
+
+    const user = {
+      id: result.insertedId.toString(),
+      name,
+      email,
+    };
+
     return user;
   }
 

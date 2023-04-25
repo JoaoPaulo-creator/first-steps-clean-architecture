@@ -7,7 +7,6 @@ export class DeleteUser implements Controller {
 
   async handle({ id }: Request.Param): Promise<HttpResponse> {
     try {
-      console.log("Controller", id);
       const user = await this.d.delete(id);
       return noContent(user);
     } catch (error) {
