@@ -5,7 +5,7 @@ import { HttpResponse, badRequest, noContent } from "../interfaces/http";
 export class DeleteUser implements Controller {
   constructor(private readonly d: ExcludeUser) {}
 
-  async handle({ id }: DeleteUser.Param): Promise<HttpResponse> {
+  async handle({ id }: Request.Param): Promise<HttpResponse> {
     try {
       console.log("Controller", id);
       const user = await this.d.delete(id);
@@ -16,7 +16,7 @@ export class DeleteUser implements Controller {
   }
 }
 
-export namespace DeleteUser {
+export namespace Request {
   export type Param = {
     id: string;
   };

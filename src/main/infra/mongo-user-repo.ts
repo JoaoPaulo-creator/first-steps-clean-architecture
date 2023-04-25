@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { CreateUser, User } from "../../usecases/create-user";
 import { ExcludeUser } from "../../usecases/delete-user";
 import { UserRepo } from "../../usecases/find-users";
@@ -26,7 +27,7 @@ export class MongoDbUserRepository
 
   async delete(userId: string): Promise<void> {
     const userCollection = await MongoHelper.getCollection("users");
-    await userCollection.findOneAndDelete({ userId });
+    await userCollection.findOneAndDelete({ _id: new ObjectId(userId) });
   }
 }
 

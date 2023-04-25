@@ -1,8 +1,8 @@
 import { Router } from "express";
+import { deleteAdapt } from "../adapters/router/delete-adapter";
 import { adaptRoute } from "../adapters/router/express-router";
 import { postAdapt } from "../adapters/router/post-adapter";
 
-import { deleteAdapt } from "../adapters/router/delete-adapter";
 import { makeCreateUserController } from "../factories/controllers/create-user-controller";
 import { makeDeleteController } from "../factories/controllers/delete-user-controller";
 import { makeUserController } from "../factories/controllers/user";
