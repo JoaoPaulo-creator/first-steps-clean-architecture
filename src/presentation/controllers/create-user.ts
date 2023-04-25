@@ -1,16 +1,16 @@
-import { MongoDbUserRepository } from "../../main/infra/mongo-user-repo";
+import { CreateUser } from "../../usecases/create-user";
 import { Controller } from "../interfaces/controller";
 import { HttpResponse, badRequest, created } from "../interfaces/http";
 
 export class CreateUserController implements Controller {
-  constructor(private readonly userRepo: MongoDbUserRepository) {}
+  constructor(private readonly repo: CreateUser) {}
 
   async handle({
     name,
     email,
   }: CreateUserController.Request): Promise<HttpResponse> {
     try {
-      const user = await this.userRepo.create({ name, email });
+      const user = await this.repo.create({ name, email });
       return created(user);
     } catch (error) {
       const { message } = error;

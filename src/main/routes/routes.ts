@@ -1,15 +1,14 @@
 import { Router } from "express";
 import { adaptRoute } from "../adapters/router/express-router";
 import { postAdapt } from "../adapters/router/post-adapter";
-import { makeControllerTeste } from "../factories/controllers/controller-teste";
+
+import { deleteAdapt } from "../adapters/router/delete-adapter";
 import { makeCreateUserController } from "../factories/controllers/create-user-controller";
+import { makeDeleteController } from "../factories/controllers/delete-user-controller";
 import { makeUserController } from "../factories/controllers/user";
 
 export default (router: Router): void => {
-  router.get("/", async (req, res) => {
-    return res.json({ message: "Ola, mundo" });
-  });
-  router.get("/teste", adaptRoute(makeControllerTeste()));
   router.get("/users", adaptRoute(makeUserController()));
   router.post("/user", postAdapt(makeCreateUserController()));
+  router.delete("/user/:id", deleteAdapt(makeDeleteController()));
 };

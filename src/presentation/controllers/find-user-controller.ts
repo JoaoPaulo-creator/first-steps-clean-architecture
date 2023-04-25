@@ -2,7 +2,7 @@ import { MongoDbUserRepository } from "../../main/infra/mongo-user-repo";
 import { Controller } from "../interfaces/controller";
 import { HttpResponse, ok, serverError } from "../interfaces/http";
 
-export class UserController implements Controller {
+export class FindUserController implements Controller {
   constructor(private readonly userRepo: MongoDbUserRepository) {}
 
   async handle(request?: any): Promise<HttpResponse> {
