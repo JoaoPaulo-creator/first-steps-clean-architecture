@@ -2,11 +2,20 @@ import { ObjectId } from "mongodb";
 import { CreateUser, User } from "../../usecases/create-user";
 import { ExcludeUser } from "../../usecases/delete-user";
 import { UserRepo } from "../../usecases/find-users";
+import { UpdateUser } from "../../usecases/update-user";
 import { MongoHelper } from "./db/mongo-helper";
 
 export class MongoDbUserRepository
-  implements UserRepo, CreateUser, ExcludeUser
+  implements UserRepo, CreateUser, ExcludeUser, UpdateUser
 {
+  async update(id: string, name: string): Promise<void> {
+    const userCollection = await MongoHelper.getCollection("users");
+    await userCollection.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { name: name } }
+    );
+  }
+
   async create({
     name,
     email,
