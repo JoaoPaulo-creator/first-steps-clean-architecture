@@ -1,9 +1,9 @@
 import { ObjectId } from "mongodb";
-import { CreateUser, User } from "../../usecases/create-user";
-import { ExcludeUser } from "../../usecases/delete-user";
-import { FindOneUser } from "../../usecases/find-one-user";
-import { UserRepo } from "../../usecases/find-users";
-import { UpdateUser } from "../../usecases/update-user";
+import { CreateUser, User } from "../usecases/create-user";
+import { ExcludeUser } from "../usecases/delete-user";
+import { FindOneUser } from "../usecases/find-one-user";
+import { UserRepo } from "../usecases/find-users";
+import { UpdateUser } from "../usecases/update-user";
 import { MongoHelper } from "./db/mongo-helper";
 
 export class MongoDbUserRepository

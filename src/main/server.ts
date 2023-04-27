@@ -1,4 +1,4 @@
-import { MongoHelper } from "./infra/db/mongo-helper";
+import { MongoHelper } from "../infra/db/mongo-helper";
 require("dotenv").config();
 
 const mongoUrl = process.env.MONGO_URL;
