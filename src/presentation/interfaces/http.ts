@@ -24,6 +24,11 @@ export const noContent = (data: any): HttpResponse => ({
   data,
 });
 
+export const notFound = (data?: any): HttpResponse => ({
+  statusCode: 404,
+  data,
+});
+
 export const badRequest = (data: any): HttpResponse => ({
   statusCode: 400,
   data,
